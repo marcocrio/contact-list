@@ -15,18 +15,28 @@ class Contact{
         ):name(name),last(last),phone(phone),email(email){};
 
 
-        void setData(string name, string last, string phone, string email){
-            name  = name;
-            last  = last;
-            phone = phone;
-            email = email;
+        void setData(string sname, string slast, string sphone, string semail){
+            name  = sname;
+            last  = slast;
+            phone = sphone;
+            email = semail;
         };
-        void setNext();
+        void setNext(){
+            next == nullptr ? cout << next << endl : cout << "nomame" << endl;
+        };
 
         string getData();
+       
         Contact* getNext();
 
-        void printData();
+        void printData(){
+            cout << name << endl
+                 << last << endl
+                 << phone << endl
+                 << email << endl;
+        };
+
+
     
 };
 
@@ -39,6 +49,11 @@ int main(){
 
     head = current; 
 
-    
+    current->setData("Marco", "Ramirez", "9157040545", "maramirez25@miners.utep");
+
+    current->printData();
+    current->setNext();
+
+    delete current;
 
 };
