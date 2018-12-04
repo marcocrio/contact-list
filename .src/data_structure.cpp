@@ -223,9 +223,10 @@ int main(){
     cursor->traversedprint();
 
     cout << "delete all"<< endl;
+    
     cursor->delall();
-
-     cursor->traversedprint();
+    cursor=cursor->cursoradjust(2); 
+    cursor->traversedprint();
 
 
 };
