@@ -73,8 +73,9 @@ void Contact::indexuptade(int indx, Contact *node)
 
 void Contact::traversedprint()
 {
-    cout << "Displaying all contacs" << endl;
+    cout << "Displaying all contacs" << endl<<endl;
     traversedprint(head);
+    cout << endl;
 }
 
 void Contact::traversedprint(Contact *current)
@@ -89,13 +90,12 @@ void Contact::traversedprint(Contact *current)
 
 void Contact::printData()
 {
-    cursor->status();
-    cout << index << " "
+    //cursor->status();
+    cout << index << " ~ "
          << name << " "
          << last << " "
          << phone << " "
-         << email << endl
-         << endl;
+         << email << endl;
 };
 
 //Prints the status of a the cursor

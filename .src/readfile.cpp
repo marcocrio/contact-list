@@ -1,20 +1,20 @@
 
 #include "../.include/readfile.h"
-
 using namespace std;
 
 
 void readf::readfile(){
     string name,last,phone,email;
     dsinit();
-    
     while(filetoread >> name >> last >> phone >> email){
       cursor = cursor->newCont(name,last,phone,email);
     };
-
-    cursor->printData();
-
     filetoread.close();
+    system("CLS");
+    cout<< fname << " list was succesfully loaded."<<endl 
+        << "    press 'enter' to continue   "<<endl;
+        _getch();
+        system("CLS");
 };
 
 int readf::readerror(){

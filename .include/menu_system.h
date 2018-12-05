@@ -11,12 +11,16 @@ using namespace std;
 class Menu
 {
   private:
-   
+   readf* list;
 
   public:
     void listSel();
     void getContacts();
-    
+    void choice();
+
+    void add();
+    void display();
+    void search();
 };
 
 #endif

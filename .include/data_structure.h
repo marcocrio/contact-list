@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <conio.h>
 using namespace std;
 
 class Contact{
