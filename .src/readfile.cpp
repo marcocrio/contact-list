@@ -1,17 +1,19 @@
-#include <iostream>
-#include <fstream>
+
 #include "../.include/readfile.h"
 
 using namespace std;
 
 
-void readf::readfile(){
+void readf::readfile(Menu* menu){
     string name,last,phone,email;
-
+    Contact* cursor;
+    menu->dsinit();
+    cursor=menu->getCursor();
     while(filetoread >> name >> last >> phone >> email){
-        cout << name << " " << last << " " << phone << " " << email << endl;
+       cursor= cursor->newCont(name,last,phone,email);
     };
-
+    menu->setCursor(cursor);
+    menu->setTail(cursor);
     filetoread.close();
 };
 
@@ -24,13 +26,13 @@ int readf::readerror(){
     return EXIT_FAILURE;
 };
 
-int readf::fexist(){
+int readf::fexist(Menu* menu){
     
     filetoread.open(fdestination);
     if(!filetoread) return readerror();
     
     
-    readfile();
+    readfile(menu);
     return EXIT_SUCCESS;
 
 };

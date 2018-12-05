@@ -1,0 +1,48 @@
+Contact *head; //Start of list
+    Contact *tail; //End of list
+    Contact *cursor = new Contact();
+
+    head = cursor;
+
+    cursor->setData("Marco", "Ramirez", "9157040545", "maramirez25@miners.utep", head);
+    cursor = cursor->newCont("Aleksya", "Monkey", "990030304", "maramirez@miners.con");
+    cursor = cursor->newCont("Marcus", "Monkey", "990030304", "elmonkeyramirez@miners.con");
+    cursor = cursor->newCont("Jovanna", "Cacarez", "90030304", "lajovas@miners.con");
+
+    tail = cursor;
+
+    cursor->traversedprint();
+
+    cout << endl
+         << "pointer adjust" << endl;
+    cursor = cursor->cursoradjust(2);
+    !cursor ? cursor = head : cursor = cursor;
+    cursor->printData();
+
+    cout << endl
+         << "Delete" << endl;
+    cursor = cursor->contdel(0);
+    cout << "Cursor after delete" << endl;
+    cursor->printData();
+
+    cout << endl
+         << "Delete" << endl;
+    cursor = cursor->contdel(2);
+    cout << "Cursor after delete" << endl;
+    cursor->printData();
+    cout << endl
+         << "Traverse print after delete" << endl;
+    cursor->traversedprint();
+
+    cout << "Create new contact" << endl;
+    cursor = cursor->newCont("Raul", "Perron", "990030304", "Rarara@miners.con");
+    cursor->printData();
+    cout << endl
+         << "Traverse print" << endl;
+    cursor->traversedprint();
+
+    cout << "delete all" << endl;
+
+    cursor->delall();
+    cursor = cursor->cursoradjust(2);
+    cursor->traversedprint();

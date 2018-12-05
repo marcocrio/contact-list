@@ -3,20 +3,17 @@
 using namespace std;
 
 #include ".include/readfile.h"
-
-
+#include ".include/data_structure.h"
+#include ".include/menu_system.h"
 
 int main(){
 
-    string cl;
-    int fileerror=0;
+    Menu menu;
 
-    do{ 
-        cout << "Please type the name of the contact list you're trying to access" << endl;
-        cin >> cl;
-        readf contact_list(cl);
-        fileerror = contact_list.fexist();
-    }while(fileerror);
+    menu.listSel(this);
+    
+    
+    
 
 
 return EXIT_SUCCESS;

@@ -2,6 +2,9 @@
 #define READF_H
 
 #include <iostream>
+#include <fstream>
+#include "data_structure.h"
+#include "menu_system.h"
 using namespace std;
 
 class readf{
@@ -14,9 +17,9 @@ class readf{
         readf(string name = "undefined"):fname(name){
             fdestination = ".resources/" + name;
         };
-        void readfile();
+        void readfile(Menu* menu);
         int readerror();
-        int fexist();
+        int fexist(Menu* menu);
 };
 
 #endif
