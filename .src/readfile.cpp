@@ -4,16 +4,15 @@
 using namespace std;
 
 
-void readf::readfile(Menu* menu){
+void readf::readfile(){
     string name,last,phone,email;
-    Contact* cursor;
-    menu->dsinit();
-    cursor=menu->getCursor();
+    Contact* list = new Contact();
+    head = list;
+    cursor = head;
     while(filetoread >> name >> last >> phone >> email){
-       cursor= cursor->newCont(name,last,phone,email);
+       cursor = cursor->newCont(name,last,phone,email);
     };
-    menu->setCursor(cursor);
-    menu->setTail(cursor);
+    tail = cursor;
     filetoread.close();
 };
 
@@ -26,13 +25,29 @@ int readf::readerror(){
     return EXIT_FAILURE;
 };
 
-int readf::fexist(Menu* menu){
+int readf::fexist(){
     
     filetoread.open(fdestination);
     if(!filetoread) return readerror();
     
     
-    readfile(menu);
+    readfile();
     return EXIT_SUCCESS;
 
+};
+
+
+// setters 
+void readf::setHead(Contact* lhead){head=lhead;};
+void readf::setTail(Contact* ltail){tail=ltail;};
+void readf::setCursor(Contact* lcursor){cursor=lcursor;};
+void readf::dsinit(){cursor = new Contact(); head = cursor;};
+
+//getters
+Contact* readf::getHead(){return head;};
+Contact* readf::getTail(){return tail;};
+Contact* readf::getCursor(){return cursor;};
+
+void readf::listContacts(){
+    cursor->traversedprint();
 };

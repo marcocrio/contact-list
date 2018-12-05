@@ -2,6 +2,7 @@
 #define DATA_STRUCT_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Contact{
