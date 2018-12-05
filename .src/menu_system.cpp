@@ -8,7 +8,7 @@ void Menu::listSel()
     int fileerror = 0;
     do
     {
-        cout << "Please type the name of the contact list you're trying to access" << endl;
+        cout <<endl<< "Please type the name of the contact list you're trying to access" << endl;
         cin >> sel;
         readf contact_list(sel);
         fileerror = contact_list.fexist();

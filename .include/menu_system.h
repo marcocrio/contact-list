@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <fstream>
-#include "data_structure.h"
 #include "readfile.h"
 
 

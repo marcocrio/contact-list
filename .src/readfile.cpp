@@ -6,13 +6,14 @@ using namespace std;
 
 void readf::readfile(){
     string name,last,phone,email;
-    Contact* list = new Contact();
-    head = list;
-    cursor = head;
+    dsinit();
+    
     while(filetoread >> name >> last >> phone >> email){
-       cursor = cursor->newCont(name,last,phone,email);
+      cursor = cursor->newCont(name,last,phone,email);
     };
-    tail = cursor;
+
+    cursor->printData();
+
     filetoread.close();
 };
 
@@ -41,7 +42,12 @@ int readf::fexist(){
 void readf::setHead(Contact* lhead){head=lhead;};
 void readf::setTail(Contact* ltail){tail=ltail;};
 void readf::setCursor(Contact* lcursor){cursor=lcursor;};
-void readf::dsinit(){cursor = new Contact(); head = cursor;};
+void readf::dsinit(){
+    Contact* list = new Contact();
+    head = list;
+    head->setHead(head);
+    cursor = head;
+};
 
 //getters
 Contact* readf::getHead(){return head;};

@@ -17,6 +17,7 @@ void Contact::setHead(Contact *newhead) { head = newhead; }
 // Sets the data for the next node and moves the cursor to that node
 Contact *Contact::newCont(string sname, string slast, string sphone, string semail)
 {
+    if(head==nullptr){head=this;};
     if (name == "Undefined" && last == "Undefined" && phone == "Undefined" && email == "Undefined")
     {
         name = sname;
@@ -24,7 +25,7 @@ Contact *Contact::newCont(string sname, string slast, string sphone, string sema
         phone = sphone;
         email = semail;
         return cursor;
-    }
+    };
     Contact *lastnode = cursoradjust("lastnode");
     int indx = lastnode->index;
     if (lastnode->next == nullptr)
@@ -88,7 +89,7 @@ void Contact::traversedprint(Contact *current)
 
 void Contact::printData()
 {
-    //cursor->status();
+    cursor->status();
     cout << index << " "
          << name << " "
          << last << " "
