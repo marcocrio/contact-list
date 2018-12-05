@@ -41,4 +41,4 @@ void Menu::choice(){
 };
 
 
-void Menu::display(){system("CLS");list->listContacts();};
+void Menu::display(){list->listContacts();};

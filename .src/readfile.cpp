@@ -10,12 +10,11 @@ void readf::readfile(){
       cursor = cursor->newCont(name,last,phone,email);
     };
     filetoread.close();
-    system("CLS");
-    cout<< fname << " list was succesfully loaded."<<endl 
-        << "    press 'enter' to continue   "<<endl;
-        _getch();
-        system("CLS");
-};
+    
+    cout<< fname << " list was succesfully loaded."<<endl;
+
+
+};  
 
 int readf::readerror(){
     cerr << "Your file couldn't be opned" 
