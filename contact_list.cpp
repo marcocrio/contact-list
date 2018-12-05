@@ -10,8 +10,7 @@ int main(){
 
     Menu menu;
 
-    menu.listSel(this);
-    
+    menu.listSel();
     
     
 
