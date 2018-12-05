@@ -6,7 +6,9 @@ using namespace std;
 
 int main(){
     Menu menu;
+    cout<< "Test";
     menu.listSel();
+
 return EXIT_SUCCESS;
 
 }
