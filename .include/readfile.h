@@ -12,6 +12,7 @@ class readf{
         string fname;
         string fdestination;
         ifstream filetoread;
+        ofstream filetowrite;
 
     public:
         readf(string name = "undefined"):fname(name){
@@ -19,7 +20,7 @@ class readf{
         };
         void readfile();
         int readerror();
-        int fexist();
+        int fexist(string worr);
 
 
         //setters
@@ -27,6 +28,7 @@ class readf{
         void setTail(Contact* ltail);
         void setCursor(Contact* lhead);
         void dsinit();
+        void addContact();
         
         //getters;
         void getContacts();

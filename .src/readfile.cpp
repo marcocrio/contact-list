@@ -1,18 +1,27 @@
 
 #include "../.include/readfile.h"
+#include <limits>
 using namespace std;
 
 
 void readf::readfile(){
+    system("clear");
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
       cursor = cursor->newCont(name,last,phone,email);
     };
-    filetoread.close();
-    
-    cout<< fname << " list was succesfully loaded."<<endl;
 
+    filetoread.close();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+
+    cout<< fname << " list was succesfully loaded."<<endl
+        << "        press any key       "<< endl;
+
+    getchar();
+        
+    
 
 };  
 
@@ -25,13 +34,12 @@ int readf::readerror(){
     return EXIT_FAILURE;
 };
 
-int readf::fexist(){
+int readf::fexist(string worr){
     
-    filetoread.open(fdestination);
+    if (worr=="write"){filetowrite.open(fdestination);}
+    else if(worr == "read"){filetoread.open(fdestination);};
     if(!filetoread) return readerror();
     
-    
-    readfile();
     return EXIT_SUCCESS;
 
 };
@@ -55,4 +63,35 @@ Contact* readf::getCursor(){return cursor;};
 
 void readf::listContacts(){
     cursor->traversedprint();
+};
+
+
+void readf::addContact(){
+    string name,last,phone,email;
+    cout<<"Please enter the following information:"<<endl
+        << "Name: ";
+    cin >> name;
+    cout<< "Last Name: ";
+    cin>>last;
+    cout<< "Phone Number: ";
+    cin>>phone;
+    cout<< "Email: ";
+    cin>>email;
+
+    cursor = cursor->newCont(name,last,phone,email);
+    system("clear");
+    cout << "Your concact was succesfully created"<<endl;
+
+    fexist("write");
+
+    filetowrite << name << last << phone <<email;   
+
+    filetowrite.close();
+
+    fexist("read");
+
+    cursor->traversedprint(); 
+
+
+
 };

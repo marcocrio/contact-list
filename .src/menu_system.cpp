@@ -13,6 +13,7 @@ void Menu::listSel()
         readf* contact_list = new readf(sel);
         list = contact_list;
         fileerror = list->fexist();
+        list->readfile();
         if(fileerror){
             delete list;
         };
@@ -27,7 +28,9 @@ void Menu::getContacts(){
 };
 
 void Menu::choice(){
-    char sel;
+    system("clear");
+    string sel;
+    
     cout<< "Please select one of the following options:"<< endl
         <<"           Add [a]            "<<endl
         <<"          Display [d]         "<< endl
@@ -35,10 +38,12 @@ void Menu::choice(){
 
     cin >> sel;
 
-    if(sel == 'a' || sel =='A'){};
-    if(sel == 'd' || sel =='D'){display();};
-    if(sel == 's' || sel =='S'){};    
+    if(sel == "a" || sel =="A"){add();};
+    if(sel == "d" || sel =="D"){display();};
+    if(sel == "s" || sel =="S"){};    
 };
 
 
-void Menu::display(){list->listContacts();};
+void Menu::display(){system("clear");list->listContacts();};
+
+void Menu::add(){system("clear"); list->addContact();};
