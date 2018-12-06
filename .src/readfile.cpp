@@ -105,16 +105,7 @@ void readf::addContact(){
     cout << "Your concact was succesfully created"<<endl;
     cout << cursor->getData();
 
-    fexist("write");
     
-    filewrite(head);
-
-    filetowrite.close();
-
-    fexist("read");
-
-    readfile();
-
     cursor->traversedprint(); 
 
 };
