@@ -21,8 +21,26 @@ void readf::readfile(){
 
     getchar();
         
-    
+};  
 
+
+void readf::filetodt(){
+    system("clear");
+    string name,last,phone,email;
+    dsinit();
+    while(filetoread >> name >> last >> phone >> email){
+      cursor = cursor->newCont(name,last,phone,email);
+    };
+
+    filetoread.close();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+
+    cout<< fname << " list was succesfully loaded."<<endl
+        << "        press any key       "<< endl;
+
+    getchar();
+        
 };  
 
 int readf::readerror(){
@@ -36,8 +54,13 @@ int readf::readerror(){
 
 int readf::fexist(string worr){
     
-    if (worr=="write"){filetowrite.open(fdestination);}
-    else if(worr == "read"){filetoread.open(fdestination);};
+    if (worr=="write"){
+        filetowrite.open(fdestination);
+    }
+    else if(worr == "read"){
+        cout << "here" <<endl;
+        filetoread.open(fdestination);
+    };
     if(!filetoread) return readerror();
     
     return EXIT_SUCCESS;

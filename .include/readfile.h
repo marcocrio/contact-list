@@ -29,6 +29,9 @@ class readf{
         void setCursor(Contact* lhead);
         void dsinit();
         void addContact();
+        void filetodt();
+
+
         
         //getters;
         void getContacts();
