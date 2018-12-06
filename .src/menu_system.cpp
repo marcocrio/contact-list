@@ -13,7 +13,7 @@ void Menu::listSel()
         readf* contact_list = new readf(sel);
         list = contact_list;
         fileerror = list->fexist("read");
-        list->readfile();
+        list->filetodt();
         if(fileerror){
             delete list;
         };

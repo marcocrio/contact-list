@@ -37,6 +37,7 @@ class Contact{
     void indexuptade(int indx, Contact* node);
 
     //Getters-------------------------------
+
     int getIndex(){return index;};
     Contact* getHead(){return head;};
     Contact* getNext(){return next;};

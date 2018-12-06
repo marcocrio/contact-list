@@ -30,7 +30,7 @@ class readf{
         void dsinit();
         void addContact();
         void filetodt();
-
+        Contact* filewrite(Contact* node);
 
         
         //getters;
