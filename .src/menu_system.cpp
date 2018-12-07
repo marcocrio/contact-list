@@ -8,15 +8,15 @@ void Menu::listSel()
     int fileerror = 0;
     do
     {
+        system("clear");
         cout <<endl<< "Please type the name of the contact list you're trying to access" << endl;
         cin >> sel;
         readf* contact_list = new readf(sel);
         list = contact_list;
         fileerror = list->fexist("read");
-        list->filetodt();
         if(fileerror){
             delete list;
-        };
+        }else{list->filetodt();};
     } while (fileerror);
 
     choice();

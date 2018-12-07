@@ -9,7 +9,7 @@ void readf::readfile(){
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
-        cout << name << last << phone << email;
+        cout << name << " " << last<< " "  << phone<< " "  << email<< endl;
     };
 
     filetoread.close();
@@ -29,19 +29,29 @@ void readf::filetodt(){
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
 
-    cout<< fname << " list was succesfully loaded."<<endl
-        << "        press any key       "<< endl;
+    cout<<endl
+        <<endl
+        <<"         '"<< fname << "' list was succesfully loaded!" 
+        <<endl
+        <<"             hit 'enter' to continue          "<< endl;
 
     getchar();
+
         
 };  
 
 int readf::readerror(){
-    cerr << "Your file couldn't be opned" 
-         << endl 
-         << "PLease choose another contact list"
-         << endl 
-         << endl;
+    system("clear");
+    cerr<<endl
+        <<endl 
+        << "       The '" << fname <<"' list wasn't found! Choose another contact list."
+        << endl
+        << "                   hit 'enter' to continue         "
+        << endl 
+        << endl;
+        getchar();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
     return EXIT_FAILURE;
 };
 
@@ -49,11 +59,13 @@ int readf::fexist(string worr){
     
     if (worr=="write"){
         filetowrite.open(fdestination);
+        if(!filetowrite) return readerror();
     }
     else if(worr == "read"){
         filetoread.open(fdestination);
+        if(!filetoread) return readerror();
     };
-    if(!filetoread) return readerror();
+    
     
     return EXIT_SUCCESS;
 
@@ -72,9 +84,8 @@ void readf::dsinit(){
 };
 
 Contact* readf::filewrite(Contact* node){
-    if(node->getNext()==nullptr){return node;};
-    cout << node->getData();
-    filetowrite << node->getData();   
+    if(node==nullptr){return node;};
+    filetowrite << node->dataToFile() <<endl;   
     filewrite(node->getNext());
 };
 
@@ -103,9 +114,17 @@ void readf::addContact(){
     cursor = cursor->newCont(name,last,phone,email);
     system("clear");
     cout << "Your concact was succesfully created"<<endl;
-    cout << cursor->getData();
-
+    cursor->printData();
+    cout << endl;
     
-    cursor->traversedprint(); 
+    fexist("write");
+
+    filewrite(head);
+    filetowrite.close();
+
+    fexist("read");
+    readfile();
+
+   
 
 };
