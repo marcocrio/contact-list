@@ -37,6 +37,8 @@ class Contact{
     void indexuptade(int indx, Contact* node);
 
     //Getters-------------------------------
+    string getName(){return name;};
+    string getLast(){return last;};
 
     int getIndex(){return index;};
     Contact* getHead(){return head;};
@@ -52,6 +54,9 @@ class Contact{
      Contact* cursoradjust(int indx);
      Contact* cursoradjust(string lastnode);
      Contact* cursoradjust(int indx, Contact* target);
+
+     Contact* namesearch(string sname, string slast);
+     Contact* namesearch(string sname, string slast , Contact* target);
 
 
     Contact* contdel(int indx);

@@ -5,11 +5,11 @@ using namespace std;
 
 
 void readf::readfile(){
-    system("clear");
+    system("CLS");
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
-        cout << name << " " << last<< " "  << phone<< " "  << email<< endl;
+        cout << name << " " << last<< " "  << phone<< " "  << email<< endl<<flush;
     };
 
     filetoread.close();
@@ -18,7 +18,7 @@ void readf::readfile(){
 
 
 void readf::filetodt(){
-    system("clear");
+    system("CLS");
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
@@ -32,25 +32,20 @@ void readf::filetodt(){
     cout<<endl
         <<endl
         <<"         '"<< fname << "' list was succesfully loaded!" 
-        <<endl
-        <<"             hit 'enter' to continue          "<< endl;
-
-    getchar();
-
+        <<endl<<"           "<<flush;
+        system("PAUSE");
         
 };  
 
 int readf::readerror(){
-    system("clear");
+    system("CLS");
     cerr<<endl
         <<endl 
         << "       The '" << fname <<"' list wasn't found! Choose another contact list."
         << endl
-        << "                   hit 'enter' to continue         "
-        << endl 
-        << endl;
-        getchar();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        << "                "
+        <<flush;
+        system("PAUSE");
 
     return EXIT_FAILURE;
 };
@@ -65,7 +60,6 @@ int readf::fexist(string worr){
         filetoread.open(fdestination);
         if(!filetoread) return readerror();
     };
-    
     
     return EXIT_SUCCESS;
 
@@ -94,8 +88,11 @@ Contact* readf::getHead(){return head;};
 Contact* readf::getTail(){return tail;};
 Contact* readf::getCursor(){return cursor;};
 
-void readf::listContacts(){
+void readf::listContacts(){  
     cursor->traversedprint();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    cout << flush;
+    system("PAUSE");
 };
 
 
@@ -112,19 +109,26 @@ void readf::addContact(){
     cin>>email;
 
     cursor = cursor->newCont(name,last,phone,email);
-    system("clear");
-    cout << "Your concact was succesfully created"<<endl;
-    cursor->printData();
-    cout << endl;
-    
+
     fexist("write");
 
     filewrite(head);
     filetowrite.close();
 
-    fexist("read");
-    readfile();
+    system("CLS");
+    cout<<"         "
+        << cursor->getName()
+        << " "
+        << cursor->getLast()
+        << " was succesfully added"
+        << endl
+        <<"           "
+        <<flush;
 
-   
-
+    system("PAUSE");
 };
+
+void readf::search(string name, string last){
+    cursor=cursor->namesearch(name,last);
+    cursor->printData();
+};  

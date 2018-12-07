@@ -5,7 +5,7 @@ using namespace std;
 #include ".include/menu_system.h"
 
 int main(){
-    system("clear");
+    system("CLS");
     Menu menu;
     menu.listSel();
 

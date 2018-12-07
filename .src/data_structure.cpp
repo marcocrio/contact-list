@@ -71,6 +71,8 @@ void Contact::indexuptade(int indx, Contact *node)
 
 // Getters ---------------------------------------------------------------
 
+ 
+
 void Contact::traversedprint()
 {
     cout << "Displaying all contacs" << endl<<endl;
@@ -138,10 +140,34 @@ Contact* Contact::cursoradjust(int indx, Contact *target)
     };
 };
 
+
+// search by name
+Contact* Contact::namesearch(string sname, string slast){
+    namesearch(name,last,head);
+};
+
+Contact* Contact::namesearch(string sname, string slast , Contact* target){
+    if (target == nullptr)
+    {
+        cout << "This contact doesn't exist" << endl;
+        
+        return nullptr;
+    };
+    if (sname == target->getName() && slast == target->getLast())
+    {
+        return target;
+    }
+    else
+    {
+        namesearch(sname, slast, target->getNext());
+    };
+
+};
+
 //desctructors -----------------------------------------------------------------------------------------
 
 //Adjust the cursor and deletes the targeted node, moves the cursor to de previous node of the deleted.
-Contact *Contact::contdel(int indx)
+Contact* Contact::contdel(int indx)
 {
     Contact *todel, *link;
     //Selects delet target
@@ -175,13 +201,14 @@ Contact *Contact::contdel(int indx)
     return link;
 };
 
+/*
 void Contact::delall()
 {
     delall(head);
 }
 
 void Contact::delall(Contact *toedelete)
-{
+{   // needs review
     if (cursor->next == nullptr)
     {
         return;
@@ -191,3 +218,4 @@ void Contact::delall(Contact *toedelete)
     delall(delnext);
 };
 
+*/

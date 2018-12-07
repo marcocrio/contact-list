@@ -39,7 +39,7 @@ class readf{
         Contact* getTail();
         Contact* getCursor();
         void listContacts();
-
+        void search(string name, string last);
 };
 
 #endif
