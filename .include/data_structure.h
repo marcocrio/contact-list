@@ -2,8 +2,8 @@
 #define DATA_STRUCT_H
 
 #include <iostream>
-#include <string>
 #include <stdlib.h>
+#include <string>
 #include <limits>
 using namespace std;
 

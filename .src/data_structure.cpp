@@ -151,11 +151,14 @@ Contact* Contact::namesearch(string sname, string slast , Contact* target){
     if(target->getNext()==nullptr){
         return target->getCursor();
     }
-    if(sname == target->getName() && slast == target->getLast()){
+    string compname=target->getName();
+    string complast=target->getLast();
+    int tocomp =(sname == compname) & (slast==complast);
+    if(tocomp){
         return target->getCursor();
     }
 
-    namesearch(sname, slast, head->getNext());
+    namesearch(sname, slast, target->getNext()); 
 
 };
 
