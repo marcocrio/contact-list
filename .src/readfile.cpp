@@ -129,6 +129,7 @@ void readf::addContact(){
 };
 
 void readf::search(string name, string last){
-    cursor=cursor->namesearch(name,last);
+    cursor = cursor->namesearch(name,last);
     cursor->printData();
+    system("PAUSE");
 };  

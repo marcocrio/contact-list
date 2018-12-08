@@ -92,7 +92,7 @@ void Contact::traversedprint(Contact *current)
 
 void Contact::printData()
 {
-    //cursor->status();
+    cursor->status();
     cout << index << " ~ "
          << name << " "
          << last << " "
@@ -141,26 +141,28 @@ Contact* Contact::cursoradjust(int indx, Contact *target)
 };
 
 
-// search by name
+// search by name (doesnt check for repeated contacts)
 Contact* Contact::namesearch(string sname, string slast){
-    namesearch(name,last,head);
+    
+    head->printData();
+    cout << endl;
+    
+    Contact* toret = namesearch(sname,slast,head);
+    toret->printData();
+    system("PAUSE");
+    return toret;
+    
 };
 
 Contact* Contact::namesearch(string sname, string slast , Contact* target){
     if (target == nullptr)
     {
         cout << "This contact doesn't exist" << endl;
-        
+        system("PAUSE");
         return nullptr;
     };
-    if (sname == target->getName() && slast == target->getLast())
-    {
-        return target;
-    }
-    else
-    {
-        namesearch(sname, slast, target->getNext());
-    };
+    if (sname == target->name && slast == target->last){return target->cursor;}
+    else{namesearch(sname, slast, target->getNext());};
 
 };
 

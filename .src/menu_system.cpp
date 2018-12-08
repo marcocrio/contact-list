@@ -64,6 +64,8 @@ void Menu::search(){
         cout << "Last name:";
         cin >> last;
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        
+ 
 
     list->search(name,last);
 };

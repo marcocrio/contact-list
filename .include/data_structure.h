@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <limits>
 using namespace std;
 
 class Contact{
