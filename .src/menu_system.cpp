@@ -60,12 +60,9 @@ void Menu::search(){
     cout<< "Search:" << endl
         <<"Name: ";
         cin >> name;
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cout << "Last name:";
         cin >> last;
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        
- 
 
     list->search(name,last);
 };

@@ -83,6 +83,13 @@ Contact* readf::filewrite(Contact* node){
     filewrite(node->getNext());
 };
 
+void readf::fupdate(){
+    fexist("write");
+    filewrite(head);
+    filetowrite.close();
+
+};
+
 //getters
 Contact* readf::getHead(){return head;};
 Contact* readf::getTail(){return tail;};
@@ -116,6 +123,7 @@ void readf::addContact(){
     filetowrite.close();
 
     system("clear");
+    
     cout<<"         "
         << cursor->getName()
         << " "
@@ -123,13 +131,40 @@ void readf::addContact(){
         << " was succesfully added"
         << endl
         <<endl<<"           Press enter to continue...          "<<flush;
+        cin.get();
 
-    cin.get();
 };
 
 void readf::search(string name, string last){
-    cursor = cursor->namesearch(name,last);
-    cursor->printData();
-    cout <<endl<<"           Press enter to continue...          "<<flush;
-    cin.get();
+    string sel;
+    cursor = cursor->namesearch(name,last,head);
+    head= cursor->getHead();
+    while(1){
+        system("clear");
+        cout <<endl<<"Selected:"<<endl<<endl;
+        cursor->printData();
+        cout<<endl
+            <<"         Delete: [d]            "<< endl
+            <<"          Exit: [e]            "<< endl;
+        cin >> sel;
+        
+        if(sel == "e" || sel =="E"){return;};
+        if(sel == "d" || sel == "D"){
+
+        cursor->contdel(cursor->getIndex());
+        
+        fupdate();
+
+
+
+        cout<<"         "<< name << " " << last << " was deleted" << endl
+        <<"          Press enter to continue...          "<<flush;
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cin.get();
+        return;
+        }
+    }
+
+
+
 };  

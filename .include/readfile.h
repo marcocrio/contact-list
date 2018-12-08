@@ -31,6 +31,7 @@ class readf{
         void addContact();
         void filetodt();
         Contact* filewrite(Contact* node);
+        void fupdate();
 
         
         //getters;

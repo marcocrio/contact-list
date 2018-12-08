@@ -92,7 +92,7 @@ void Contact::traversedprint(Contact *current)
 
 void Contact::printData()
 {
-    cursor->status();
+    //cursor->status();
     cout << index << " ~ "
          << name << " "
          << last << " "
@@ -147,19 +147,27 @@ Contact* Contact::namesearch(string sname, string slast){
 };
 
 Contact* Contact::namesearch(string sname, string slast , Contact* target){
+    string compname= target->getName();
+    string complast= target->getLast();
+    int namecomp= compname == sname;
+    int lastcomp = complast == slast;
+    int tocomp = namecomp && lastcomp;
+    while(!tocomp){
+        if(target->getNext()==nullptr){
+            cout << sname << " "<< slast<< " doesn't exist"<<endl<<flush;
+            cout <<endl<<"          Press enter to continue...          "<<flush;
+            cin.get();
+            return target->getCursor();
+        }
 
-    if(target->getNext()==nullptr){
-        return target->getCursor();
+        target = target->getNext();
+        compname= target->getName();
+        complast= target->getLast();
+        lastcomp = complast == slast;
+        namecomp= compname == sname;
+        tocomp = namecomp && lastcomp;
     }
-    string compname=target->getName();
-    string complast=target->getLast();
-    int tocomp =(sname == compname) & (slast==complast);
-    if(tocomp){
-        return target->getCursor();
-    }
-
-    namesearch(sname, slast, target->getNext()); 
-
+    return target->getCursor();
 };
 
 //desctructors -----------------------------------------------------------------------------------------
