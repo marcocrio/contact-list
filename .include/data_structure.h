@@ -44,6 +44,7 @@ class Contact{
     int getIndex(){return index;};
     Contact* getHead(){return head;};
     Contact* getNext(){return next;};
+    Contact* getCursor(){return cursor;};
     string getData(){return index + " " +name + " " + last + " " +phone +" "+ email;}
     string dataToFile(){return name + " " + last + " " +phone +" "+ email;};
     void traversedprint();

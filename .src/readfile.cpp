@@ -5,7 +5,7 @@ using namespace std;
 
 
 void readf::readfile(){
-    system("CLS");
+    system("clear");
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
@@ -18,7 +18,7 @@ void readf::readfile(){
 
 
 void readf::filetodt(){
-    system("CLS");
+    system("clear");
     string name,last,phone,email;
     dsinit();
     while(filetoread >> name >> last >> phone >> email){
@@ -38,7 +38,7 @@ void readf::filetodt(){
 };  
 
 int readf::readerror(){
-    system("CLS");
+    system("clear");
     cerr<<endl
         <<endl 
         << "       The '" << fname <<"' list wasn't found! Choose another contact list."
@@ -115,7 +115,7 @@ void readf::addContact(){
     filewrite(head);
     filetowrite.close();
 
-    system("CLS");
+    system("clear");
     cout<<"         "
         << cursor->getName()
         << " "
@@ -131,5 +131,6 @@ void readf::addContact(){
 void readf::search(string name, string last){
     cursor = cursor->namesearch(name,last);
     cursor->printData();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
     system("PAUSE");
 };  

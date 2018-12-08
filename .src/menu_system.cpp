@@ -8,7 +8,7 @@ void Menu::listSel()
     int fileerror = 0;
     do
     {
-        system("CLS");
+        system("clear");
         cout <<endl<< "Please type the name of the contact list you're trying to access" << endl <<flush;
         cin >> sel;
         readf* contact_list = new readf(sel);
@@ -30,7 +30,7 @@ void Menu::getContacts(){
 void Menu::choice(){
     string programexit = "keep";
     while(1){
-        system("CLS");
+        system("clear");
         string sel;
         
         cout<< "Please select one of the following options:"<< endl
@@ -50,13 +50,13 @@ void Menu::choice(){
 };
 
 
-void Menu::display(){system("CLS");list->listContacts();};
+void Menu::display(){system("clear");list->listContacts();};
 
-void Menu::add(){system("CLS"); list->addContact();};
+void Menu::add(){system("clear"); list->addContact();};
 
 void Menu::search(){
     string name,last;
-    system("CLS"); 
+    system("clear"); 
     cout<< "Search:" << endl
         <<"Name: ";
         cin >> name;

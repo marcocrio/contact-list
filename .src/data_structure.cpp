@@ -161,7 +161,8 @@ Contact* Contact::namesearch(string sname, string slast , Contact* target){
         system("PAUSE");
         return nullptr;
     };
-    if (sname == target->name && slast == target->last){return target->cursor;}
+    
+    if (sname == target->getName() && slast == target->getLast()){return target;}
     else{namesearch(sname, slast, target->getNext());};
 
 };
