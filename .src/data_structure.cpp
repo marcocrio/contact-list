@@ -154,10 +154,10 @@ Contact* Contact::namesearch(string sname, string slast , Contact* target){
     int tocomp = namecomp && lastcomp;
     while(!tocomp){
         if(target->getNext()==nullptr){
-            cout << sname << " "<< slast<< " doesn't exist"<<endl<<flush;
-            cout <<endl<<"          Press enter to continue...          "<<flush;
+            cout <<endl<<"          "<< sname << " "<< slast<< " doesn't exist"<<endl
+                 <<"          Press enter to continue...          "<<endl<<flush;
             cin.get();
-            return target->getCursor();
+            return nullptr;
         }
 
         target = target->getNext();

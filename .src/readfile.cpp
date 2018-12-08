@@ -32,7 +32,7 @@ void readf::filetodt(){
     cout<<endl
         <<endl
         <<"         '"<< fname << "' list was succesfully loaded!" 
-        <<endl<<"           Press enter to continue...          "<<flush;
+        <<endl<<"           Press enter to continue...          "<<endl<<flush;
         cin.get();
         
 };  
@@ -44,7 +44,7 @@ int readf::readerror(){
         << "       The '" << fname <<"' list wasn't found! Choose another contact list."
         << endl
         <<endl<<"           Press enter to continue...          "
-        <<flush;
+        <<endl<<flush;
         cin.get();
 
     return EXIT_FAILURE;
@@ -98,7 +98,7 @@ Contact* readf::getCursor(){return cursor;};
 void readf::listContacts(){  
     cursor->traversedprint();
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    cout <<endl<<"           Press enter to continue...          "<< flush;
+    cout <<endl<<"           Press enter to continue...          "<<endl<< flush;
     cin.get();
 };
 
@@ -115,8 +115,12 @@ void readf::addContact(){
     cout<< "Email: ";
     cin>>email;
 
+    cout << "To add: "<< name << " "<< last << " "<< phone << " "<< email <<endl;
     cursor = cursor->newCont(name,last,phone,email);
-
+    cout << "addcont linkedlist "<< endl; 
+    cursor->traversedprint();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    cin.get();
     fexist("write");
 
     filewrite(head);
@@ -129,8 +133,7 @@ void readf::addContact(){
         << " "
         << cursor->getLast()
         << " was succesfully added"
-        << endl
-        <<endl<<"           Press enter to continue...          "<<flush;
+        <<endl<<"           Press enter to continue...          "<<endl<<flush;
         cin.get();
 
 };
@@ -138,8 +141,12 @@ void readf::addContact(){
 void readf::search(string name, string last){
     string sel;
     cursor = cursor->namesearch(name,last,head);
-    head= cursor->getHead();
+    if(cursor==nullptr){
+        cursor = head->cursoradjust("last");
+        return;
+    }
     while(1){
+        head= cursor->getHead();
         system("clear");
         cout <<endl<<"Selected:"<<endl<<endl;
         cursor->printData();
@@ -148,17 +155,17 @@ void readf::search(string name, string last){
             <<"          Exit: [e]            "<< endl;
         cin >> sel;
         
-        if(sel == "e" || sel =="E"){return;};
+        if(sel == "e" || sel =="E"){cursor = head->cursoradjust("last"); return;};
         if(sel == "d" || sel == "D"){
 
         cursor->contdel(cursor->getIndex());
         
         fupdate();
 
-
+        system("clear");
 
         cout<<"         "<< name << " " << last << " was deleted" << endl
-        <<"          Press enter to continue...          "<<flush;
+        <<"          Press enter to continue...          "<<endl<<flush;
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cin.get();
         return;

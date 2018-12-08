@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ -g contact_list.cpp .src/data_structure.cpp .src/menu_system.cpp .src/readfile.cpp -o contact_list",
+            "command": "g++ -g contact_list.cpp .src/data_structure.cpp .src/menu_system.cpp .src/readfile.cpp -o contact_list.out",
             "group":{
                 "kind": "build",
                 "isDefault": true

@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/contact_list",
+            "program": "${workspaceFolder}/contact_list.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
