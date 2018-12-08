@@ -32,8 +32,8 @@ void readf::filetodt(){
     cout<<endl
         <<endl
         <<"         '"<< fname << "' list was succesfully loaded!" 
-        <<endl<<"           "<<flush;
-        system("PAUSE");
+        <<endl<<"           Press enter to continue...          "<<flush;
+        cin.get();
         
 };  
 
@@ -43,9 +43,9 @@ int readf::readerror(){
         <<endl 
         << "       The '" << fname <<"' list wasn't found! Choose another contact list."
         << endl
-        << "                "
+        <<endl<<"           Press enter to continue...          "
         <<flush;
-        system("PAUSE");
+        cin.get();
 
     return EXIT_FAILURE;
 };
@@ -91,8 +91,8 @@ Contact* readf::getCursor(){return cursor;};
 void readf::listContacts(){  
     cursor->traversedprint();
     cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    cout << flush;
-    system("PAUSE");
+    cout <<endl<<"           Press enter to continue...          "<< flush;
+    cin.get();
 };
 
 
@@ -122,15 +122,14 @@ void readf::addContact(){
         << cursor->getLast()
         << " was succesfully added"
         << endl
-        <<"           "
-        <<flush;
+        <<endl<<"           Press enter to continue...          "<<flush;
 
-    system("PAUSE");
+    cin.get();
 };
 
 void readf::search(string name, string last){
     cursor = cursor->namesearch(name,last);
     cursor->printData();
-    cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    system("PAUSE");
+    cout <<endl<<"           Press enter to continue...          "<<flush;
+    cin.get();
 };  
